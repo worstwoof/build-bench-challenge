@@ -2303,6 +2303,12 @@ pre {
   min-height: 540px;
   height: min(590px, calc(100svh - 160px));
   max-height: 590px;
+  background-color: #f1f6f9;
+  background-image: none;
+}
+
+.portal-hero .hero-overlay {
+  background: transparent;
 }
 
 .portal-hero .hero-content {
@@ -2666,12 +2672,12 @@ pre {
 }
 
 .draft-masthead {
-  background: #fff9ee;
-  border-bottom-color: #ead5a7;
+  background: var(--paper);
+  border-bottom-color: var(--line);
 }
 
 .draft-masthead .page-kicker {
-  color: #8a5a08;
+  color: var(--blue-dark);
 }
 
 .masthead-facts {
@@ -2772,12 +2778,12 @@ pre {
 }
 
 .rail-status.draft {
-  background: var(--amber-soft);
-  border-left-color: var(--amber);
+  background: var(--blue-soft);
+  border-left-color: var(--blue);
 }
 
 .rail-status.draft span {
-  color: #7c5207;
+  color: var(--blue-dark);
 }
 
 .rail-status.review {
@@ -2837,9 +2843,9 @@ pre {
 }
 
 .draft-banner {
-  background: var(--amber-soft);
-  border-color: #ead5a7;
-  border-left-color: var(--amber);
+  background: var(--blue-soft);
+  border-color: #bdd7ee;
+  border-left-color: var(--blue);
 }
 
 .draft-banner > svg,
@@ -2850,7 +2856,7 @@ pre {
 }
 
 .draft-banner > svg {
-  color: #865a0c;
+  color: var(--blue-dark);
 }
 
 .draft-banner strong {
@@ -3220,8 +3226,8 @@ pre {
 
 .contract-state.tba,
 .decision-open {
-  color: #7d540a;
-  background: var(--amber-soft);
+  color: var(--blue-dark);
+  background: var(--blue-soft);
 }
 
 .contract-state.review,
