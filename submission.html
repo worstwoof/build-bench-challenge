@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Draft Agent submission model and organizer-run API contract for the Build-Bench Challenge." />
+    <title>Agent Submission | Build-Bench Challenge</title>
+    <link rel="canonical" href="https://worstwoof.github.io/build-bench-challenge/submission.html" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="submission">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="status-strip" role="status"><span class="status-strip-label">Draft contract</span><span>The single-Agent model is confirmed; packaging, API fields, budgets, and network policy are not final.</span></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Build-Bench Challenge home"><span class="brand-mark" aria-hidden="true">BB</span><span>Build-Bench</span></a>
+        <button class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" title="Open navigation" data-menu-button><i data-lucide="menu" aria-hidden="true"></i></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="index.html">Overview</a><a href="task.html">Task &amp; Data</a><a class="active" href="submission.html" aria-current="page">Submission</a><a href="evaluation.html">Evaluation</a><a href="rules.html">Rules</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a><a class="nav-emphasis" href="leaderboard.html"><i data-lucide="trophy" aria-hidden="true"></i>Leaderboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="page-masthead draft-masthead">
+        <div class="content-wrap">
+          <div><span class="page-kicker"><i data-lucide="file-clock" aria-hidden="true"></i>Draft interface</span><h1>Agent Submission</h1><p>Teams will provide one repair Agent that satisfies a standardized input and output contract. Organizers will run the Agent on competition cases and score its resulting repairs.</p></div>
+          <dl class="masthead-facts"><div><dt>Submission model</dt><dd>One Agent</dd></div><div><dt>Execution</dt><dd>Organizer controlled</dd></div><div><dt>Contract version</dt><dd>To be announced</dd></div></dl>
+        </div>
+      </section>
+
+      <div class="content-wrap page-layout">
+        <aside class="page-rail" aria-label="On this page">
+          <strong>On this page</strong>
+          <nav><a href="#model">Submission model</a><a href="#lifecycle">Lifecycle</a><a href="#input">Agent input</a><a href="#output">Agent output</a><a href="#packaging">Packaging</a><a href="#resources">Resources &amp; APIs</a><a href="#checklist">Checklist</a></nav>
+          <div class="rail-status draft"><span>Draft</span><p>Do not build against field names on this page until the versioned starter kit is released.</p></div>
+        </aside>
+
+        <article class="page-document">
+          <div class="draft-banner"><i data-lucide="triangle-alert" aria-hidden="true"></i><div><strong>Interface under design</strong><p>The organizing team has confirmed a single Agent submission model. The delivery artifact, invocation method, schemas, resource limits, model access, and failure semantics still require team approval.</p></div></div>
+
+          <section class="doc-section" id="model">
+            <span class="section-label">Submission model</span>
+            <h2>Submit an Agent, not precomputed answers</h2>
+            <p class="lead">A team supplies a reproducible Agent that can consume the prescribed case input and emit the prescribed repair output. The competition harness invokes that Agent on organizer-controlled validation and hidden test cases.</p>
+            <div class="single-model"><i data-lucide="bot" aria-hidden="true"></i><div><strong>One competition entry</strong><p>The Agent may internally use prompting, retrieval, static analysis, build-log parsing, tool calls, or iterative repair loops. These are implementation choices inside the same submission model, not separate submission modes.</p></div></div>
+            <p>The repair patch remains the common artifact that the evaluator applies and builds. It is an Agent output, not a second way to enter the competition.</p>
+          </section>
+
+          <section class="doc-section" id="lifecycle">
+            <span class="section-label">Organizer-run lifecycle</span>
+            <h2>From Agent artifact to leaderboard score</h2>
+            <ol class="agent-flow">
+              <li><span>1</span><i data-lucide="package-plus" aria-hidden="true"></i><div><strong>Team submits Agent</strong><p>The platform validates metadata and stores an immutable, versioned entry.</p></div></li>
+              <li><span>2</span><i data-lucide="box" aria-hidden="true"></i><div><strong>Harness starts runtime</strong><p>The organizer launches the Agent in an isolated environment with the announced limits.</p></div></li>
+              <li><span>3</span><i data-lucide="folder-input" aria-hidden="true"></i><div><strong>Harness provides a case</strong><p>The Agent receives a case directory and metadata through the versioned interface.</p></div></li>
+              <li><span>4</span><i data-lucide="file-output" aria-hidden="true"></i><div><strong>Agent emits a repair</strong><p>The Agent writes a unified diff and structured completion status to the output location.</p></div></li>
+              <li><span>5</span><i data-lucide="hammer" aria-hidden="true"></i><div><strong>Evaluator builds package</strong><p>The repair is applied to a clean copy and verified with the official target build.</p></div></li>
+              <li><span>6</span><i data-lucide="bar-chart-3" aria-hidden="true"></i><div><strong>Results are aggregated</strong><p>Valid case outcomes contribute to the submission score and leaderboard statistics.</p></div></li>
+            </ol>
+          </section>
+
+          <section class="doc-section" id="input">
+            <span class="section-label">Draft input contract</span>
+            <h2>What the harness provides</h2>
+            <p>The final starter kit will define an exact directory tree and machine-readable schema. The following capabilities are intended, but field names are not final.</p>
+            <div class="contract-list">
+              <div><span class="contract-state intended">Intended</span><strong>Read-only case directory</strong><p>Package specifications, source archives, existing patches, auxiliary build-service files, and the failed log.</p></div>
+              <div><span class="contract-state intended">Intended</span><strong>Case manifest</strong><p>Case ID, package name, source architecture, target architecture, validator backend, and checksums.</p></div>
+              <div><span class="contract-state tba">TBA</span><strong>Invocation transport</strong><p>Fixed CLI command, local HTTP API, or equivalent harness adapter.</p></div>
+              <div><span class="contract-state tba">TBA</span><strong>Iteration feedback</strong><p>Whether an Agent can request build attempts during one case, and which logs are returned after each attempt.</p></div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="output">
+            <span class="section-label">Draft output contract</span>
+            <h2>Return a repair and a structured status</h2>
+            <p>A unified diff is the planned repair artifact because it is inspectable, auditable, and can be applied to a clean package copy. The harness also needs a machine-readable result describing whether the Agent produced a repair.</p>
+            <div class="code-block contract-code">
+              <div><span>Illustrative output only - not the final schema</span></div>
+              <pre data-command-text><code>{
+  "case_id": "example-case",
+  "status": "repaired",
+  "patch_path": "output/repair.diff"
+}</code></pre>
+            </div>
+            <div class="source-callout warning-callout"><i data-lucide="info" aria-hidden="true"></i><p>The sample communicates the shape of the contract, not guaranteed names or values. The released JSON Schema and conformance tests will be authoritative.</p></div>
+            <h3>Expected result classes</h3>
+            <div class="status-grid"><div><strong>Repair produced</strong><p>A candidate diff is available for policy checks and executable validation.</p></div><div><strong>No repair</strong><p>The Agent completed but intentionally emitted no patch for the case.</p></div><div><strong>Agent failure</strong><p>The Agent crashed, timed out, or returned malformed output; final scoring semantics are TBA.</p></div></div>
+          </section>
+
+          <section class="doc-section" id="packaging">
+            <span class="section-label">Delivery and entrypoint</span>
+            <h2>Reproducible packaging is required; the vehicle is TBA</h2>
+            <p>The Agent must be runnable without manual intervention and must expose one deterministic entrypoint. The team has not yet chosen whether the official artifact will be a container image, a source repository plus lockfile, or another packaged runtime.</p>
+            <div class="table-scroll document-table" tabindex="0" aria-label="Scrollable Agent packaging decision table"><table class="decision-table"><thead><tr><th>Decision</th><th>Current status</th></tr></thead><tbody><tr><td>Submission artifact</td><td><span class="decision-open">Open</span> Container image, repository bundle, or platform-managed package</td></tr><tr><td>Entrypoint</td><td><span class="decision-open">Open</span> Fixed CLI or local API</td></tr><tr><td>Architecture of Agent runtime</td><td><span class="decision-open">Open</span> Native, emulated, or platform selected</td></tr><tr><td>Dependency installation</td><td><span class="decision-open">Open</span> Prebuilt only or bounded setup phase</td></tr><tr><td>Versioning</td><td><span class="decision-intended">Intended</span> Immutable artifact digest per leaderboard entry</td></tr></tbody></table></div>
+          </section>
+
+          <section class="doc-section" id="resources">
+            <span class="section-label">Resources and external services</span>
+            <h2>Policies that must be frozen before submissions open</h2>
+            <div class="open-decisions">
+              <div><i data-lucide="timer" aria-hidden="true"></i><span><strong>Time and iteration budget</strong><p>Per-case wall time, maximum repair attempts, tool calls, and build requests.</p></span></div>
+              <div><i data-lucide="cpu" aria-hidden="true"></i><span><strong>Compute budget</strong><p>CPU, memory, disk, accelerator availability, and concurrency.</p></span></div>
+              <div><i data-lucide="network" aria-hidden="true"></i><span><strong>Network policy</strong><p>Whether outbound access is disabled, allowlisted, or brokered only through organizer APIs.</p></span></div>
+              <div><i data-lucide="key-round" aria-hidden="true"></i><span><strong>Model credentials</strong><p>Supported model providers, secret injection, accounting, and whether teams may bring their own keys.</p></span></div>
+              <div><i data-lucide="rotate-ccw" aria-hidden="true"></i><span><strong>Retry semantics</strong><p>Startup retries, transient API failures, malformed output, timeout, and evaluator fault handling.</p></span></div>
+              <div><i data-lucide="calendar-clock" aria-hidden="true"></i><span><strong>Submission frequency</strong><p>Daily limits, artifact replacement, validation queue priority, and final-entry selection.</p></span></div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="checklist">
+            <span class="section-label">Release checklist</span>
+            <h2>What participants will receive before launch</h2>
+            <ul class="release-checklist"><li><i data-lucide="square" aria-hidden="true"></i>Versioned Agent interface specification</li><li><i data-lucide="square" aria-hidden="true"></i>JSON Schema or equivalent validation contract</li><li><i data-lucide="square" aria-hidden="true"></i>Minimal conforming example Agent</li><li><i data-lucide="square" aria-hidden="true"></i>Local conformance and smoke-test command</li><li><i data-lucide="square" aria-hidden="true"></i>Development cases with expected evaluator outputs</li><li><i data-lucide="square" aria-hidden="true"></i>Published resource, model API, network, and failure policies</li></ul>
+          </section>
+
+          <nav class="next-page" aria-label="Next page"><span>Next</span><a href="evaluation.html"><strong>Evaluation</strong><small>See how Agent runs become scores</small><i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><span class="brand-mark" aria-hidden="true">BB</span><div><strong>Build-Bench Challenge</strong><small>ICSE 2027 Competition Track</small></div></div><nav class="footer-links" aria-label="Footer navigation"><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a></nav><a href="#main-content">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a></div></footer>
+  </body>
+</html>

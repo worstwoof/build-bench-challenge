@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Frequently asked questions about the Build-Bench Challenge Agent submission, evaluation, dataset, and timeline." />
+    <title>FAQ | Build-Bench Challenge</title>
+    <link rel="canonical" href="https://worstwoof.github.io/build-bench-challenge/faq.html" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="faq">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="status-strip" role="status"><span class="status-strip-label">Living document</span><span>Answers will be updated as the Agent contract, evaluator, and schedule are finalized.</span></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Build-Bench Challenge home"><span class="brand-mark" aria-hidden="true">BB</span><span>Build-Bench</span></a>
+        <button class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" title="Open navigation" data-menu-button><i data-lucide="menu" aria-hidden="true"></i></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="index.html">Overview</a><a href="task.html">Task &amp; Data</a><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a href="rules.html">Rules</a><a href="timeline.html">Timeline</a><a class="active" href="faq.html" aria-current="page">FAQ</a><a class="nav-emphasis" href="leaderboard.html"><i data-lucide="trophy" aria-hidden="true"></i>Leaderboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="page-masthead">
+        <div class="content-wrap">
+          <div><span class="page-kicker">Participant help</span><h1>Frequently Asked Questions</h1><p>Current answers distinguish confirmed competition direction, proposal-derived plans, and details that still require an organizer decision.</p></div>
+          <dl class="masthead-facts"><div><dt>Submission</dt><dd>One Agent</dd></div><div><dt>Validation</dt><dd>Executable builds</dd></div><div><dt>Open details</dt><dd>Marked Draft or TBA</dd></div></dl>
+        </div>
+      </section>
+
+      <div class="content-wrap page-layout faq-page-layout">
+        <aside class="page-rail" aria-label="FAQ categories">
+          <strong>Categories</strong>
+          <nav><a href="#participation">Participation</a><a href="#agent">Agent interface</a><a href="#evaluation">Evaluation</a><a href="#data">Data &amp; builds</a><a href="#schedule">Schedule &amp; support</a></nav>
+          <div class="rail-note"><span>Need context?</span><p>Read the dedicated page linked from each answer for the complete specification.</p></div>
+        </aside>
+
+        <article class="page-document">
+          <section class="doc-section faq-group" id="participation">
+            <span class="section-label">Participation</span>
+            <h2>Entering the competition</h2>
+            <div class="faq-list">
+              <details open><summary>What exactly does a team submit?<i data-lucide="plus" aria-hidden="true"></i></summary><p>One repair Agent that follows the versioned organizer interface. The Agent is run by the competition harness on organizer-controlled cases. It returns a repair artifact and structured completion status. Packaging and API details are still being designed; see <a href="submission.html">Agent Submission</a>.</p></details>
+              <details><summary>Are patch output and Agent container separate submission modes?<i data-lucide="plus" aria-hidden="true"></i></summary><p>No. The competition now intends to use a single Agent submission model. A unified diff is the common repair output produced by the Agent and consumed by the evaluator. It is not a second competition entry path.</p></details>
+              <details><summary>Must the Agent use an LLM?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The primary leaderboard is intended for LLM-based and agentic repair systems. Traditional non-LLM systems may be included as clearly labeled comparison baselines, subject to the final rulebook.</p></details>
+              <details><summary>How large can a team be?<i data-lucide="plus" aria-hidden="true"></i></summary><p>Team-size, affiliation, registration, and conflict-of-interest rules have not yet been announced. They will follow the ICSE Competition Track requirements and the released competition rulebook.</p></details>
+            </div>
+          </section>
+
+          <section class="doc-section faq-group" id="agent">
+            <span class="section-label">Agent interface</span>
+            <h2>Runtime and API questions</h2>
+            <div class="faq-list">
+              <details><summary>Will the Agent be submitted as a Docker image?<i data-lucide="plus" aria-hidden="true"></i></summary><p>Possibly, but that choice is not final. The organizing team still needs to choose the packaging format, entrypoint, runtime architecture, and dependency policy. The released starter kit will contain a minimal conforming Agent.</p></details>
+              <details><summary>What input will the Agent receive?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The intended input includes a read-only case directory with package specifications, source archives, existing patches, auxiliary files, the original failed build log, architecture labels, checksums, and manifest metadata. Exact field names and paths are TBA.</p></details>
+              <details><summary>What must the Agent return?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The planned common repair artifact is a unified diff plus a machine-readable completion status. The final schema, supported no-repair status, error fields, and output paths will be published as a versioned contract.</p></details>
+              <details><summary>Can an Agent request more than one build attempt?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The research benchmark supports iterative repair, but the competition's maximum attempts, returned feedback, time budget, and tool-call limits are not final.</p></details>
+              <details><summary>Can the Agent call external model APIs?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The model and network policy is still open. Organizers may disable general outbound access and provide allowlisted or brokered model APIs. Participants must not embed personal or production secrets in an Agent artifact.</p></details>
+            </div>
+          </section>
+
+          <section class="doc-section faq-group" id="evaluation">
+            <span class="section-label">Evaluation</span>
+            <h2>Scoring and leaderboard questions</h2>
+            <div class="faq-list">
+              <details><summary>How is a repair judged?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The evaluator applies the Agent's repair to a clean case, checks modification policy, and runs the official target-architecture build validator. Textual similarity to an organizer patch is not the success criterion.</p></details>
+              <details><summary>Are the current metrics final?<i data-lucide="plus" aria-hidden="true"></i></summary><p>No. Build success rate and the listed tie-breakers come from the accepted proposal, not a completed post-acceptance team decision. They remain explicitly marked Draft on the <a href="evaluation.html">Evaluation page</a>.</p></details>
+              <details><summary>What happens if the Agent crashes or times out?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The final scoring semantics are TBA. The rulebook must distinguish Agent failure, malformed output, build failure, infrastructure failure, and cases canceled by the organizers.</p></details>
+              <details><summary>Will model cost or token usage affect ranking?<i data-lucide="plus" aria-hidden="true"></i></summary><p>This has not been decided. The organizer must determine whether Agent runtime, model cost, token use, build time, and repair iterations are ranking metrics, tie-breakers, or informational columns.</p></details>
+              <details><summary>Why does the current leaderboard show model results?<i data-lucide="plus" aria-hidden="true"></i></summary><p>Those rows reproduce research results from the Build-Bench paper so participants can understand the benchmark. They are not competition entries and will remain visibly separated from the future public competition ranking.</p></details>
+            </div>
+          </section>
+
+          <section class="doc-section faq-group" id="data">
+            <span class="section-label">Data and builds</span>
+            <h2>Cases, architectures, and OBS</h2>
+            <div class="faq-list">
+              <details><summary>How many Build-Bench cases are there?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The latest paper reports 268 reproducible cases: 163 for x86_64-to-aarch64 and 105 for aarch64-to-x86_64. Final development, validation, and hidden-test counts will be frozen before launch.</p></details>
+              <details><summary>What is OBS and why is it used?<i data-lucide="plus" aria-hidden="true"></i></summary><p>Open Build Service is a platform for building packages across distributions and architectures. Build-Bench uses it as an executable validation backend: after a repair is applied, OBS rebuilds the package for the target architecture and reports whether the real build succeeds.</p></details>
+              <details><summary>Can participants validate locally?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The accepted proposal plans Docker-based local validation for development while retaining the OBS path for paper-aligned and official validation. The starter kit will document prerequisites and known architecture-emulation limitations.</p></details>
+              <details><summary>Will every package artifact be redistributed?<i data-lucide="plus" aria-hidden="true"></i></summary><p>Only when licensing permits. For cases with unclear redistribution status, organizers may release scripts that reconstruct the case from public package sources.</p></details>
+            </div>
+          </section>
+
+          <section class="doc-section faq-group" id="schedule">
+            <span class="section-label">Schedule and support</span>
+            <h2>Releases, deadlines, and updates</h2>
+            <div class="faq-list">
+              <details><summary>When will public validation open?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The accepted proposal targets September 2026. This is a proposed month, not a binding date. Exact deadlines will be aligned with the official ICSE 2027 schedule.</p></details>
+              <details><summary>When is the final submission deadline?<i data-lucide="plus" aria-hidden="true"></i></summary><p>The proposal targets a November 2026 freeze for hidden evaluation. The exact date, timezone, artifact selection procedure, and rerun window remain TBA.</p></details>
+              <details><summary>Where will rule and evaluator changes be announced?<i data-lucide="plus" aria-hidden="true"></i></summary><p>Changes will be versioned on the competition website and announced through the public support channel selected by the organizers. A frozen evaluator version will be announced before final submission.</p></details>
+              <details><summary>Will teams be able to submit solution papers?<i data-lucide="plus" aria-hidden="true"></i></summary><p>If the ICSE track invites solution papers, eligible teams are expected to need a valid final entry, rule compliance, system disclosure, and performance above an announced baseline. Track-chair policy and page limits will control the final process.</p></details>
+            </div>
+          </section>
+
+          <nav class="next-page" aria-label="Next page"><span>Explore</span><a href="leaderboard.html"><strong>Research Leaderboard</strong><small>View paper-reported baseline results</small><i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><span class="brand-mark" aria-hidden="true">BB</span><div><strong>Build-Bench Challenge</strong><small>ICSE 2027 Competition Track</small></div></div><nav class="footer-links" aria-label="Footer navigation"><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a></nav><a href="#main-content">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a></div></footer>
+  </body>
+</html>

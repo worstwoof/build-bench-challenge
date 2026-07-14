@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Participation, integrity, disclosure, and reproducibility rules for the Build-Bench Challenge." />
+    <title>Rules | Build-Bench Challenge</title>
+    <link rel="canonical" href="https://worstwoof.github.io/build-bench-challenge/rules.html" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="rules">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="status-strip" role="status"><span class="status-strip-label">Rules preview</span><span>Integrity principles come from the accepted proposal; operational thresholds remain TBA.</span></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Build-Bench Challenge home"><span class="brand-mark" aria-hidden="true">BB</span><span>Build-Bench</span></a>
+        <button class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" title="Open navigation" data-menu-button><i data-lucide="menu" aria-hidden="true"></i></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="index.html">Overview</a><a href="task.html">Task &amp; Data</a><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a class="active" href="rules.html" aria-current="page">Rules</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a><a class="nav-emphasis" href="leaderboard.html"><i data-lucide="trophy" aria-hidden="true"></i>Leaderboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="page-masthead">
+        <div class="content-wrap">
+          <div><span class="page-kicker">Competition policy</span><h1>Rules</h1><p>Build real repairs, disclose the system that produced them, preserve the evaluator, and make final results reproducible under organizer control.</p></div>
+          <dl class="masthead-facts"><div><dt>Primary focus</dt><dd>LLM-based repair Agents</dd></div><div><dt>Final validation</dt><dd>Organizer audit and rerun</dd></div><div><dt>Thresholds</dt><dd>Published before launch</dd></div></dl>
+        </div>
+      </section>
+
+      <div class="content-wrap page-layout">
+        <aside class="page-rail" aria-label="On this page">
+          <strong>On this page</strong>
+          <nav><a href="#eligibility">Eligibility</a><a href="#disclosure">Disclosure</a><a href="#allowed">Allowed work</a><a href="#prohibited">Prohibited conduct</a><a href="#resources">Resources</a><a href="#hidden">Hidden evaluation</a><a href="#enforcement">Enforcement</a></nav>
+          <div class="rail-note"><span>Notice</span><p>The versioned rulebook released with the starter kit will supersede this preview.</p></div>
+        </aside>
+
+        <article class="page-document">
+          <div class="source-callout"><i data-lucide="info" aria-hidden="true"></i><p>This page preserves the accepted proposal's integrity principles while avoiding unconfirmed limits. Team size, submission frequency, API allowlists, and exact resource budgets will be added after organizer approval.</p></div>
+
+          <section class="doc-section" id="eligibility">
+            <span class="section-label">Eligibility and entry</span>
+            <h2>Who the competition is designed for</h2>
+            <p>The primary leaderboard is intended for LLM-based and agentic repair systems from academic, industry, and independent teams. Registration rules, team-size limits, affiliation restrictions, and conflict-of-interest procedures will follow the official ICSE Competition Track requirements and the released rulebook.</p>
+            <div class="rule-points"><div><i data-lucide="users" aria-hidden="true"></i><span><strong>One team, one declared entry</strong><p>Final registration and team-composition rules are TBA.</p></span></div><div><i data-lucide="bot" aria-hidden="true"></i><span><strong>Agent-focused ranking</strong><p>Non-LLM systems may appear as clearly labeled comparison baselines, subject to final policy.</p></span></div><div><i data-lucide="badge-check" aria-hidden="true"></i><span><strong>Valid final run required</strong><p>A team must submit a conforming Agent and complete organizer-run evaluation to receive a final result.</p></span></div></div>
+          </section>
+
+          <section class="doc-section" id="disclosure">
+            <span class="section-label">Method disclosure</span>
+            <h2>Describe what the Agent actually uses</h2>
+            <p>Each final entry must disclose enough information for organizers to understand and rerun the method without revealing hidden evaluator data.</p>
+            <ul class="requirement-list"><li><i data-lucide="check" aria-hidden="true"></i>Base model names and exact versions when available</li><li><i data-lucide="check" aria-hidden="true"></i>Major prompts, retrieval sources, external tools, static analyzers, and repair-loop design</li><li><i data-lucide="check" aria-hidden="true"></i>Training, fine-tuning, external knowledge bases, or private data used for the entry</li><li><i data-lucide="check" aria-hidden="true"></i>Third-party APIs and services contacted during Agent execution</li><li><i data-lucide="check" aria-hidden="true"></i>Known nondeterminism, caching, preprocessing, and reproducibility constraints</li></ul>
+          </section>
+
+          <section class="doc-section" id="allowed">
+            <span class="section-label">Allowed work</span>
+            <h2>Repair package content through the official interface</h2>
+            <div class="allowed-grid"><div><strong>Reason over all released case evidence</strong><p>Specifications, sources, patches, logs, scripts, metadata, and architecture labels.</p></div><div><strong>Use an internal toolchain</strong><p>Prompting, retrieval, code search, static analysis, log parsing, and iterative Agent loops.</p></div><div><strong>Modify permitted package paths</strong><p>Specifications, build scripts, source code, tests, packaging macros, and related package files.</p></div><div><strong>Return a different valid repair</strong><p>Repairs need not match an organizer reference patch when they pass policy and executable validation.</p></div></div>
+          </section>
+
+          <section class="doc-section" id="prohibited">
+            <span class="section-label">Prohibited conduct</span>
+            <h2>Do not bypass the task or evaluator</h2>
+            <div class="prohibited-list"><div><i data-lucide="ban" aria-hidden="true"></i><span><strong>Hard-code hidden solutions</strong><p>No embedded hidden patches, case-specific answers, leaked labels, or lookup tables.</p></span></div><div><i data-lucide="shield-off" aria-hidden="true"></i><span><strong>Exploit evaluator bugs</strong><p>No attempts to escape isolation, alter evaluator metadata, spoof results, or rely on unintended validator behavior.</p></span></div><div><i data-lucide="test-tube-diagonal" aria-hidden="true"></i><span><strong>Disable meaningful validation</strong><p>No deleting essential tests, bypassing the build, or suppressing failures without a legitimate repair.</p></span></div><div><i data-lucide="package-x" aria-hidden="true"></i><span><strong>Replace the package with a dummy artifact</strong><p>The repaired output must remain the intended package and preserve its meaningful functionality.</p></span></div><div><i data-lucide="file-warning" aria-hidden="true"></i><span><strong>Modify forbidden paths</strong><p>Case manifests, checksums, hidden metadata, evaluator files, and other immutable inputs must remain unchanged.</p></span></div><div><i data-lucide="user-round-x" aria-hidden="true"></i><span><strong>Use undeclared manual intervention</strong><p>Organizer-run cases must be processed by the submitted Agent under the announced interface and policy.</p></span></div></div>
+          </section>
+
+          <section class="doc-section" id="resources">
+            <span class="section-label">Models, network, and secrets</span>
+            <h2>Do not assume unrestricted external access</h2>
+            <p>The unified Agent model requires an explicit policy for model APIs and network access. That policy is not final. The release will state whether calls are disabled, allowlisted, or brokered through organizer-managed APIs.</p>
+            <div class="source-callout warning-callout"><i data-lucide="key-round" aria-hidden="true"></i><p>Participants must never embed production API keys or personal credentials in submitted artifacts. Secret injection, logging, accounting, and redaction will be defined by the official platform.</p></div>
+          </section>
+
+          <section class="doc-section" id="hidden">
+            <span class="section-label">Hidden evaluation</span>
+            <h2>Held-out cases stay under organizer control</h2>
+            <ul class="numbered-rules"><li><span>1</span><p>The hidden test set will not be distributed before final evaluation.</p></li><li><span>2</span><p>Final Agents run with a frozen interface, evaluator version, and resource policy.</p></li><li><span>3</span><p>Only aggregate results and limited diagnostic categories will be released after the deadline.</p></li><li><span>4</span><p>Organizers may inspect successful, unusually small, suspicious, or policy-sensitive repairs.</p></li><li><span>5</span><p>Entries affected by an evaluator defect may be rerun under a documented correction policy.</p></li></ul>
+          </section>
+
+          <section class="doc-section" id="enforcement">
+            <span class="section-label">Audit and enforcement</span>
+            <h2>Results must survive review and rerun</h2>
+            <p>Organizers may request source, logs, configuration, method documentation, or a reproducible artifact for finalist verification. A result may be corrected, removed, or disqualified when it cannot be reproduced or violates the released rules.</p>
+            <div class="table-scroll document-table" tabindex="0" aria-label="Scrollable enforcement action table"><table class="decision-table"><thead><tr><th>Situation</th><th>Potential action</th></tr></thead><tbody><tr><td>Malformed or nonconforming Agent output</td><td>Case failure or invalid submission under the final scoring policy</td></tr><tr><td>Accidental evaluator defect</td><td>Announced fix and affected-entry rerun where feasible</td></tr><tr><td>Undeclared dependency or unreproducible finalist</td><td>Request clarification, corrected artifact, or result removal</td></tr><tr><td>Build bypass, hidden-answer leakage, or sandbox abuse</td><td>Disqualification and removal from the leaderboard</td></tr></tbody></table></div>
+          </section>
+
+          <nav class="next-page" aria-label="Next page"><span>Next</span><a href="timeline.html"><strong>Timeline</strong><small>Review the proposed competition schedule</small><i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><span class="brand-mark" aria-hidden="true">BB</span><div><strong>Build-Bench Challenge</strong><small>ICSE 2027 Competition Track</small></div></div><nav class="footer-links" aria-label="Footer navigation"><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a></nav><a href="#main-content">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a></div></footer>
+  </body>
+</html>

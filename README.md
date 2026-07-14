@@ -12,16 +12,20 @@ Open `index.html` directly, or serve the directory with any static file server.
 ## Content status
 
 The site separates verified research results from planned competition
-infrastructure:
+infrastructure and uses focused pages instead of one long landing page:
 
-- `index.html` documents the task, data, evaluator, proposed submission modes,
-  rules, timeline, FAQ, and organizers.
+- `index.html` is the competition overview and navigation hub.
+- `task.html` documents the task, case anatomy, research corpus, and planned splits.
+- `submission.html` documents the single Agent submission model and draft API contract.
+- `evaluation.html` separates proposal-derived metrics from team-approved rules.
+- `rules.html`, `timeline.html`, and `faq.html` contain participant guidance.
 - `leaderboard.html` shows paper-reported research baselines until public
   competition submissions open.
 
-Rules, final split counts, platform details, submission limits, and participant
-deadlines remain organizer-preview content. Confirm them against the released
-evaluator and starter kit before removing the preview banners.
+The Agent packaging format, API schema, resource and network policies, exact
+metrics, final split counts, submission limits, and deadlines remain draft or
+organizer-preview content. Confirm them against the released evaluator and
+starter kit before removing the preview banners.
 
 ## Sources
 

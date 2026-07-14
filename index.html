@@ -3,20 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="The Build-Bench Challenge at ICSE 2027 evaluates LLM-based systems for executable cross-architecture package build repair."
-    />
+    <meta name="description" content="The Build-Bench Challenge at ICSE 2027 evaluates agents for executable cross-architecture package build repair." />
     <meta property="og:title" content="Build-Bench Challenge | ICSE 2027" />
-    <meta
-      property="og:description"
-      content="A competition for executable repair of real package build failures across x86_64 and aarch64."
-    />
+    <meta property="og:description" content="A competition for agent-driven repair of real package build failures across x86_64 and aarch64." />
     <meta property="og:url" content="https://worstwoof.github.io/build-bench-challenge/" />
-    <meta
-      property="og:image"
-      content="https://worstwoof.github.io/build-bench-challenge/assets/framework.png"
-    />
+    <meta property="og:image" content="https://worstwoof.github.io/build-bench-challenge/assets/framework.png" />
     <meta name="theme-color" content="#ffffff" />
     <title>Build-Bench Challenge | ICSE 2027</title>
     <link rel="canonical" href="https://worstwoof.github.io/build-bench-challenge/" />
@@ -30,587 +21,146 @@
 
     <div class="status-strip" role="status">
       <span class="status-strip-label">Organizer preview</span>
-      <span>Accepted to the ICSE 2027 Competition Track. Infrastructure is in preparation.</span>
+      <span>Accepted to the ICSE 2027 Competition Track. Rules and infrastructure are being finalized.</span>
     </div>
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#overview" aria-label="Build-Bench Challenge home">
+        <a class="brand" href="index.html" aria-label="Build-Bench Challenge home">
           <span class="brand-mark" aria-hidden="true">BB</span>
           <span>Build-Bench</span>
         </a>
-
-        <button
-          class="icon-button menu-button"
-          type="button"
-          aria-label="Open navigation"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          title="Open navigation"
-          data-menu-button
-        >
+        <button class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" title="Open navigation" data-menu-button>
           <i data-lucide="menu" aria-hidden="true"></i>
         </button>
-
         <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
-          <a href="#overview">Overview</a>
-          <a href="#task">Task</a>
-          <a href="#dataset">Dataset</a>
-          <a href="#evaluation">Evaluation</a>
-          <a href="#participate">Participate</a>
-          <a href="#timeline">Timeline</a>
-          <a href="#faq">FAQ</a>
-          <a class="nav-emphasis" href="leaderboard.html">
-            <i data-lucide="trophy" aria-hidden="true"></i>
-            Leaderboard
-          </a>
+          <a class="active" href="index.html" aria-current="page">Overview</a>
+          <a href="task.html">Task &amp; Data</a>
+          <a href="submission.html">Submission</a>
+          <a href="evaluation.html">Evaluation</a>
+          <a href="rules.html">Rules</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="faq.html">FAQ</a>
+          <a class="nav-emphasis" href="leaderboard.html"><i data-lucide="trophy" aria-hidden="true"></i>Leaderboard</a>
         </nav>
       </div>
     </header>
 
     <main id="main-content">
-      <section class="benchmark-hero" id="overview" aria-labelledby="hero-title">
+      <section class="benchmark-hero portal-hero" aria-labelledby="hero-title">
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-content">
-          <a
-            class="conference-label"
-            href="https://conf.researchr.org/track/icse-2027/icse-2027-competition-track"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a class="conference-label" href="https://conf.researchr.org/track/icse-2027/icse-2027-competition-track" target="_blank" rel="noreferrer">
             <span class="live-dot" aria-hidden="true"></span>
             Official ICSE 2027 Competition
             <i data-lucide="arrow-up-right" aria-hidden="true"></i>
           </a>
-
           <h1 id="hero-title">Build-Bench Challenge</h1>
           <p class="hero-subtitle">Cross-Architecture Package Build Repair</p>
           <p class="hero-summary">
-            Can language-model systems diagnose and repair real software packages that build on one
-            instruction set architecture but fail on another? Build-Bench evaluates the answer with
-            clean patch application and executable builds, not reference-patch similarity.
+            Build an agent that diagnoses and repairs real software packages which build on one
+            instruction set architecture but fail on another. Repairs are judged by executable builds
+            in a controlled environment.
           </p>
-
-          <div class="organizer-line" aria-label="Competition organizers">
-            <span>Chenyu Zhao</span>
-            <span>Shenglin Zhang</span>
-            <span>Zeshun Huang</span>
-            <span>Minghua Ma</span>
+          <div class="hero-links" aria-label="Primary actions">
+            <a href="task.html"><i data-lucide="scan-search" aria-hidden="true"></i>Explore the task</a>
+            <a href="submission.html"><i data-lucide="bot" aria-hidden="true"></i>Agent interface</a>
+            <a href="https://arxiv.org/abs/2511.00780" target="_blank" rel="noreferrer"><i data-lucide="file-text" aria-hidden="true"></i>Research paper</a>
           </div>
-          <p class="affiliations">Nankai University &middot; Microsoft</p>
+          <p class="release-state"><i data-lucide="construction" aria-hidden="true"></i>Competition data, starter kit, API contract, and submission portal are planned releases.</p>
+        </div>
+      </section>
 
-          <div class="hero-links" aria-label="Project resources">
-            <a href="https://arxiv.org/abs/2511.00780" target="_blank" rel="noreferrer">
-              <i data-lucide="file-text" aria-hidden="true"></i>
-              Paper
+      <section class="event-band" aria-label="Competition summary">
+        <div class="event-summary">
+          <div><span>Status</span><strong>Infrastructure preparation</strong></div>
+          <div><span>Submission unit</span><strong>One compliant repair Agent</strong></div>
+          <div><span>Evaluation</span><strong>Organizer-run hidden cases</strong></div>
+          <div><span>Final session</span><strong>ICSE 2027</strong></div>
+        </div>
+        <div class="stage-line" aria-label="Proposed competition stages">
+          <span class="complete"><i></i>Proposal accepted</span>
+          <span class="current"><i></i>Starter kit</span>
+          <span><i></i>Public validation</span>
+          <span><i></i>Hidden evaluation</span>
+          <span><i></i>ICSE session</span>
+        </div>
+      </section>
+
+      <section class="portal-section" aria-labelledby="start-title">
+        <div class="content-wrap">
+          <div class="portal-heading">
+            <div>
+              <span class="section-label">Competition guide</span>
+              <h2 id="start-title">Start with the part you need</h2>
+            </div>
+            <p>The full specification is separated into focused pages. Draft items remain visibly marked until the organizing team freezes them.</p>
+          </div>
+          <div class="gateway-grid">
+            <a href="task.html">
+              <i data-lucide="package-search" aria-hidden="true"></i>
+              <span><strong>Task &amp; Dataset</strong><small>Case contents, repair scope, data directions, and planned splits</small></span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="https://github.com/zcyyc/Build-bench" target="_blank" rel="noreferrer">
-              <i data-lucide="github" aria-hidden="true"></i>
-              Code
+            <a href="submission.html">
+              <i data-lucide="bot" aria-hidden="true"></i>
+              <span><strong>Agent Submission</strong><small>The single submission model and the draft organizer API contract</small></span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="https://aiops-lab-nku.github.io/Build-bench/" target="_blank" rel="noreferrer">
-              <i data-lucide="chart-no-axes-combined" aria-hidden="true"></i>
-              Research results
+            <a href="evaluation.html">
+              <i data-lucide="badge-check" aria-hidden="true"></i>
+              <span><strong>Evaluation</strong><small>Executable validation, proposed metrics, evaluator stages, and open decisions</small></span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="leaderboard.html">
-              <i data-lucide="trophy" aria-hidden="true"></i>
-              Leaderboard
+            <a href="rules.html">
+              <i data-lucide="shield-check" aria-hidden="true"></i>
+              <span><strong>Rules</strong><small>Integrity, disclosure, allowed modifications, audits, and reproducibility</small></span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
             </a>
           </div>
-
-          <p class="release-state">
-            <i data-lucide="construction" aria-hidden="true"></i>
-            Competition data, starter kit, and submission portal are planned releases.
-          </p>
         </div>
       </section>
 
       <section class="fact-band" aria-label="Build-Bench research benchmark summary">
         <div class="fact-grid">
-          <div class="fact">
-            <strong>268</strong>
-            <span>reproducible failed packages</span>
-          </div>
-          <div class="fact">
-            <strong>2</strong>
-            <span>cross-ISA migration directions</span>
-          </div>
-          <div class="fact">
-            <strong>5</strong>
-            <span>major failure categories</span>
-          </div>
-          <div class="fact">
-            <strong>63.19%</strong>
-            <span>best paper-reported success rate</span>
-          </div>
+          <div class="fact"><strong>268</strong><span>reproducible failed packages</span></div>
+          <div class="fact"><strong>2</strong><span>cross-ISA migration directions</span></div>
+          <div class="fact"><strong>5</strong><span>major failure categories</span></div>
+          <div class="fact"><strong>63.19%</strong><span>best paper-reported success rate</span></div>
         </div>
       </section>
 
-      <section class="content-section" id="task" aria-labelledby="task-title">
-        <div class="content-wrap">
-          <div class="section-intro centered-intro">
-            <span class="section-label">Competition task</span>
-            <h2 id="task-title">Repair the package, then prove it builds</h2>
-            <p>
-              A task instance starts from a package that succeeds on a source architecture and fails
-              on the target architecture. A participant system consumes the failed case and produces
-              a repair patch. The evaluator applies that patch to a clean copy and rebuilds the package
-              on the target architecture.
-            </p>
+      <section class="portal-section tinted-section" aria-labelledby="workflow-title">
+        <div class="content-wrap compact-split">
+          <div class="portal-heading stacked-heading">
+            <span class="section-label">Competition model</span>
+            <h2 id="workflow-title">One Agent, one controlled evaluation path</h2>
+            <p>Teams provide an Agent that follows the published interface. Organizers run that Agent against competition cases and verify every repair in the official build environment.</p>
+            <a class="text-link" href="submission.html">Read the draft Agent contract<i data-lucide="arrow-right" aria-hidden="true"></i></a>
           </div>
-
-          <figure class="framework-figure">
-            <img
-              src="assets/framework.png"
-              alt="Build-Bench workflow showing failed package context, LLM-driven repair, and Open Build Service verification"
-              width="1934"
-              height="912"
-            />
-            <figcaption>
-              Research workflow adapted for the competition: diagnose, modify, rebuild, and return
-              executable feedback for another iteration when needed.
-            </figcaption>
-          </figure>
-
-          <div class="step-row" aria-label="Evaluation workflow">
-            <article class="step-block">
-              <span>01</span>
-              <i data-lucide="package-search" aria-hidden="true"></i>
-              <h3>Inspect</h3>
-              <p>Read the manifest, package layout, build scripts, metadata, and failed log.</p>
-            </article>
-            <article class="step-block">
-              <span>02</span>
-              <i data-lucide="scan-search" aria-hidden="true"></i>
-              <h3>Diagnose</h3>
-              <p>Localize architecture-specific assumptions, dependency faults, or packaging errors.</p>
-            </article>
-            <article class="step-block">
-              <span>03</span>
-              <i data-lucide="file-diff" aria-hidden="true"></i>
-              <h3>Repair</h3>
-              <p>Produce a focused unified diff that modifies only permitted package files.</p>
-            </article>
-            <article class="step-block">
-              <span>04</span>
-              <i data-lucide="badge-check" aria-hidden="true"></i>
-              <h3>Verify</h3>
-              <p>Apply the patch in a clean workspace and run the target-architecture build validator.</p>
-            </article>
-          </div>
-
-          <div class="definition-grid">
-            <div>
-              <span class="section-label">Case input</span>
-              <h3>What each released case contains</h3>
-              <ul class="plain-list">
-                <li><i data-lucide="file-code-2" aria-hidden="true"></i>Package specification files such as RPM <code>.spec</code> files</li>
-                <li><i data-lucide="archive" aria-hidden="true"></i>Source archives, existing patches, service files, and package metadata</li>
-                <li><i data-lucide="scroll-text" aria-hidden="true"></i>The original failed build log</li>
-                <li><i data-lucide="cpu" aria-hidden="true"></i>Source and target architecture labels</li>
-                <li><i data-lucide="shield-check" aria-hidden="true"></i>Checksums, constraints, and optional immutable metadata</li>
-              </ul>
-            </div>
-            <div>
-              <span class="section-label">Repair scope</span>
-              <h3>What systems may need to change</h3>
-              <ul class="plain-list">
-                <li><i data-lucide="settings-2" aria-hidden="true"></i>Architecture guards and dependency declarations</li>
-                <li><i data-lucide="terminal-square" aria-hidden="true"></i>Compiler flags, build scripts, and generated configuration</li>
-                <li><i data-lucide="braces" aria-hidden="true"></i>Source-level architecture assumptions</li>
-                <li><i data-lucide="flask-conical" aria-hidden="true"></i>Target-sensitive tests and runtime expectations</li>
-                <li><i data-lucide="package-check" aria-hidden="true"></i>Installed files, packaging macros, and scriptlets</li>
-              </ul>
-            </div>
-          </div>
+          <ol class="home-flow">
+            <li><span>01</span><div><strong>Submit Agent</strong><p>Provide a reproducible Agent artifact using the announced packaging format.</p></div></li>
+            <li><span>02</span><div><strong>Run hidden case</strong><p>The harness supplies one case through the standardized interface.</p></div></li>
+            <li><span>03</span><div><strong>Collect repair</strong><p>The Agent returns the prescribed repair artifact and structured status.</p></div></li>
+            <li><span>04</span><div><strong>Build and score</strong><p>OBS or the official validator checks the repair and feeds aggregate results to the leaderboard.</p></div></li>
+          </ol>
         </div>
       </section>
 
-      <section class="content-section tinted-section" id="dataset" aria-labelledby="dataset-title">
-        <div class="content-wrap split-layout">
-          <div class="section-intro sticky-intro">
-            <span class="section-label">Dataset</span>
-            <h2 id="dataset-title">A real, system-level repair corpus</h2>
-            <p>
-              The competition will be derived from the Build-Bench research corpus collected from
-              public openSUSE build scenarios. Every retained package was rebuilt to confirm that the
-              cross-architecture failure was reproducible.
-            </p>
-            <div class="source-note">
-              <i data-lucide="info" aria-hidden="true"></i>
-              <p>
-                The latest paper reports 163 x86_64-to-aarch64 cases and 105 reverse cases. Final
-                competition split counts will be frozen before launch.
-              </p>
-            </div>
+      <section class="portal-section" aria-labelledby="schedule-title">
+        <div class="content-wrap schedule-preview">
+          <div>
+            <span class="section-label">Proposed schedule</span>
+            <h2 id="schedule-title">From starter kit to ICSE 2027</h2>
+            <p>Dates below come from the accepted proposal and remain subject to alignment with the official ICSE 2027 schedule.</p>
+            <a class="text-link" href="timeline.html">View the complete timeline<i data-lucide="arrow-right" aria-hidden="true"></i></a>
           </div>
-
-          <div class="dataset-detail">
-            <div class="direction-grid">
-              <div>
-                <strong>163</strong>
-                <span>x86_64 &rarr; aarch64</span>
-                <small>Paper-reported research corpus</small>
-              </div>
-              <div>
-                <strong>105</strong>
-                <span>aarch64 &rarr; x86_64</span>
-                <small>Paper-reported research corpus</small>
-              </div>
-            </div>
-
-            <div class="category-chart" aria-labelledby="category-title">
-              <div class="subsection-heading">
-                <h3 id="category-title">Failure composition</h3>
-                <p>Human-validated categories reported in the Build-Bench paper.</p>
-              </div>
-              <div class="bar-row">
-                <div><span>Compilation error</span><strong>116</strong></div>
-                <div class="bar-track"><span class="bar-fill" style="--bar-width: 100%"></span></div>
-              </div>
-              <div class="bar-row">
-                <div><span>Build preparation error</span><strong>78</strong></div>
-                <div class="bar-track"><span class="bar-fill coral" style="--bar-width: 67.24%"></span></div>
-              </div>
-              <div class="bar-row">
-                <div><span>Test failure</span><strong>42</strong></div>
-                <div class="bar-track"><span class="bar-fill green" style="--bar-width: 36.21%"></span></div>
-              </div>
-              <div class="bar-row">
-                <div><span>Packaging error</span><strong>24</strong></div>
-                <div class="bar-track"><span class="bar-fill amber" style="--bar-width: 20.69%"></span></div>
-              </div>
-              <div class="bar-row">
-                <div><span>Environment / infrastructure error</span><strong>8</strong></div>
-                <div class="bar-track"><span class="bar-fill gray" style="--bar-width: 6.90%"></span></div>
-              </div>
-            </div>
-
-            <div class="split-table-wrap">
-              <div class="subsection-heading">
-                <h3>Planned competition splits</h3>
-                <p>Final counts and package assignments will be fixed before the competition opens.</p>
-              </div>
-              <table class="info-table">
-                <thead>
-                  <tr><th>Split</th><th>Visibility</th><th>Purpose</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Development</td><td><span class="tag public">Public</span></td><td>Local debugging and method development</td></tr>
-                  <tr><td>Validation</td><td><span class="tag public">Public inputs and scores</span></td><td>Leaderboard feedback</td></tr>
-                  <tr><td>Test</td><td><span class="tag hidden">Hidden labels and cases</span></td><td>Final ranking</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="evaluation" aria-labelledby="evaluation-title">
-        <div class="content-wrap">
-          <div class="section-intro centered-intro">
-            <span class="section-label">Evaluation</span>
-            <h2 id="evaluation-title">Executable outcomes are the oracle</h2>
-            <p>
-              A repair counts only when the patch applies cleanly, respects policy, and the package
-              completes the official build validator on the target architecture.
-            </p>
-          </div>
-
-          <div class="evaluation-grid">
-            <div class="metric-panel">
-              <span class="section-label">Primary metric</span>
-              <div class="formula" aria-label="Success rate equals successfully built cases divided by evaluated cases">
-                <span>SuccessRate</span>
-                <span>=</span>
-                <span class="fraction"><span>successfully built cases</span><span>evaluated cases</span></span>
-              </div>
-              <p>
-                Textual similarity to an organizer patch is not used as the success criterion. The
-                package must build in the configured environment.
-              </p>
-            </div>
-
-            <div class="tiebreak-panel">
-              <span class="section-label">Tie-breakers, in order</span>
-              <ol>
-                <li><span>01</span>Fewer invalid patches</li>
-                <li><span>02</span>Smaller total patch size</li>
-                <li><span>03</span>Fewer modified files</li>
-                <li><span>04</span>Lower organizer-side build time</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="evaluator-stages" aria-label="Official evaluator stages">
-            <article>
-              <span>1</span>
-              <h3>Verify input</h3>
-              <p>Check the case checksum and create a clean working copy.</p>
-            </article>
-            <article>
-              <span>2</span>
-              <h3>Apply patch</h3>
-              <p>Use standard patch tools and record whether application succeeds.</p>
-            </article>
-            <article>
-              <span>3</span>
-              <h3>Check policy</h3>
-              <p>Reject forbidden paths, evaluator metadata changes, and invalid repairs.</p>
-            </article>
-            <article>
-              <span>4</span>
-              <h3>Run build</h3>
-              <p>Launch the target-architecture validator with a bounded timeout.</p>
-            </article>
-            <article>
-              <span>5</span>
-              <h3>Write result</h3>
-              <p>Emit JSON status, duration, patch statistics, and build-log paths.</p>
-            </article>
-          </div>
-
-          <div class="policy-grid">
-            <div>
-              <h3>Public validation feedback</h3>
-              <p>
-                Participants will receive per-case outcomes and logs on public splits. The proposal
-                targets completion within a few hours using a reduced public scope and conservative
-                per-case timeouts.
-              </p>
-            </div>
-            <div>
-              <h3>Hidden final evaluation</h3>
-              <p>
-                Organizers will use a frozen evaluator, the same timeout policy, prebuilt images, and
-                cached dependencies where possible. Only aggregate results and a small diagnostic set
-                will be released after the deadline.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section dark-section" id="participate" aria-labelledby="participate-title">
-        <div class="content-wrap">
-          <div class="section-intro centered-intro light-intro">
-            <span class="section-label">Participation</span>
-            <h2 id="participate-title">Two submission modes, one build criterion</h2>
-            <p>
-              Patch output is the proposed main ranking mode. A containerized-agent mode is optional
-              and will be activated only after the patch infrastructure and sandbox are stable.
-            </p>
-          </div>
-
-          <div class="segmented-control" role="tablist" aria-label="Submission modes">
-            <button type="button" role="tab" aria-selected="true" aria-controls="patch-panel" id="patch-tab" data-mode-tab="patch">
-              <i data-lucide="file-diff" aria-hidden="true"></i>
-              Patch output
-            </button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="container-panel" id="container-tab" data-mode-tab="container">
-              <i data-lucide="container" aria-hidden="true"></i>
-              Agent container
-            </button>
-          </div>
-
-          <div class="mode-panel" id="patch-panel" role="tabpanel" aria-labelledby="patch-tab" data-mode-panel="patch">
-            <div>
-              <span class="mode-badge primary">Proposed main ranking</span>
-              <h3>Generate repairs with your own workflow</h3>
-              <p>
-                Teams run their LLM or agentic system before submission, then provide one unified diff
-                per case and a short description of the model, prompts, retrieval sources, tools, and
-                repair loop used to generate it.
-              </p>
-            </div>
-            <div class="format-spec">
-              <div><span>Artifact</span><strong><code>patches/&lt;case-id&gt;.diff</code></strong></div>
-              <div><span>Application</span><strong>Clean copy, no manual intervention</strong></div>
-              <div><span>No repair</span><strong>Omit the patch or submit an empty file</strong></div>
-              <div><span>Ranking</span><strong>Stable public and hidden evaluation path</strong></div>
-            </div>
-          </div>
-
-          <div class="mode-panel" id="container-panel" role="tabpanel" aria-labelledby="container-tab" data-mode-panel="container" hidden>
-            <div>
-              <span class="mode-badge optional">Optional, subject to readiness</span>
-              <h3>Submit an end-to-end repair system</h3>
-              <p>
-                A containerized agent implements a fixed command-line interface. The evaluator mounts
-                a case read-only, invokes the container, and collects a unified diff from the output
-                directory under fixed resource and sandbox policies.
-              </p>
-            </div>
-            <div class="format-spec">
-              <div><span>Interface</span><strong><code>/repair/input /repair/output</code></strong></div>
-              <div><span>Input</span><strong>Read-only case directory</strong></div>
-              <div><span>Output</span><strong>Unified diff in the output directory</strong></div>
-              <div><span>Status</span><strong>Will not replace patch output as the main mode</strong></div>
-            </div>
-          </div>
-
-          <div class="starter-kit">
-            <div class="starter-copy">
-              <span class="section-label">Planned starter kit</span>
-              <h3>A short path from download to first score</h3>
-              <p>
-                The proposal commits to public development cases, a local evaluator, Docker build
-                files, simple baselines, and example submissions with expected outputs.
-              </p>
-              <ul class="check-list">
-                <li><i data-lucide="check" aria-hidden="true"></i>Public development cases</li>
-                <li><i data-lucide="check" aria-hidden="true"></i>Docker files for local validation</li>
-                <li><i data-lucide="check" aria-hidden="true"></i>No-op and simple rule-based baselines</li>
-                <li><i data-lucide="check" aria-hidden="true"></i>Example successful and failed submissions</li>
-              </ul>
-            </div>
-            <div class="code-block">
-              <div class="code-toolbar">
-                <span>Evaluator interface example</span>
-                <button class="icon-button dark-icon-button" type="button" aria-label="Copy evaluator command" title="Copy evaluator command" data-copy-command>
-                  <i data-lucide="copy" aria-hidden="true"></i>
-                </button>
-              </div>
-              <pre><code data-command-text>python evaluate.py \
-  --cases cases/ \
-  --submission patches/ \
-  --out results.json</code></pre>
-              <p><i data-lucide="circle-alert" aria-hidden="true"></i>The starter kit and final CLI have not yet been released.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="rules" aria-labelledby="rules-title">
-        <div class="content-wrap split-layout rules-layout">
-          <div class="section-intro sticky-intro">
-            <span class="section-label">Rules and integrity</span>
-            <h2 id="rules-title">Repair the build, do not bypass it</h2>
-            <p>
-              The primary leaderboard is intended for LLM-based and agentic systems. Final rules will
-              be versioned before submissions open, but the accepted proposal already defines the
-              following integrity requirements.
-            </p>
-          </div>
-          <div class="rule-list">
-            <article>
-              <i data-lucide="badge-check" aria-hidden="true"></i>
-              <div><h3>Disclose the system</h3><p>Report the model and major tool sources used to generate repairs. Purely non-LLM systems may appear as labeled comparisons or baselines.</p></div>
-            </article>
-            <article>
-              <i data-lucide="shield-x" aria-hidden="true"></i>
-              <div><h3>Do not exploit the evaluator</h3><p>No hard-coded hidden solutions, evaluator-bug exploitation, validator disabling, essential-test removal, or dummy package outputs.</p></div>
-            </article>
-            <article>
-              <i data-lucide="folder-lock" aria-hidden="true"></i>
-              <div><h3>Modify only allowed paths</h3><p>Inputs and evaluator metadata are immutable. The final evaluator will audit modified paths and reject forbidden changes.</p></div>
-            </article>
-            <article>
-              <i data-lucide="wifi-off" aria-hidden="true"></i>
-              <div><h3>Respect hidden-evaluation isolation</h3><p>Network access is disabled unless an optional container mode explicitly supports declared model APIs under a published policy.</p></div>
-            </article>
-            <article>
-              <i data-lucide="scan-eye" aria-hidden="true"></i>
-              <div><h3>Expect audit and reruns</h3><p>Organizers may manually inspect successful, unusually small, or suspicious repairs and rerun affected submissions after evaluator fixes.</p></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section tinted-section" id="timeline" aria-labelledby="timeline-title">
-        <div class="content-wrap">
-          <div class="section-intro centered-intro">
-            <span class="section-label">Timeline</span>
-            <h2 id="timeline-title">Competition plan and ICSE deadlines</h2>
-            <p>
-              Competition milestones below come from the accepted proposal. Paper-related deadlines
-              are fixed by the official ICSE 2027 Competition Track.
-            </p>
-          </div>
-
-          <div class="timeline-columns">
-            <div>
-              <h3>Competition milestones</h3>
-              <ol class="timeline-list">
-                <li class="current"><time datetime="2026-07">July 2026</time><div><span>In preparation</span><strong>Website and starter kit</strong><p>Publish participant documentation, evaluator interface, and onboarding example.</p></div></li>
-                <li><time datetime="2026-08">August 2026</time><div><strong>Development set and baselines</strong><p>Release public cases, local validation assets, and reference systems.</p></div></li>
-                <li><time datetime="2026-09">September 2026</time><div><strong>Validation leaderboard opens</strong><p>Begin public-split submissions and structured build feedback.</p></div></li>
-                <li><time datetime="2026-11">November 2026</time><div><strong>Final submission freeze</strong><p>Freeze the evaluator and collect entries for hidden evaluation.</p></div></li>
-                <li><time datetime="2026-12">December 2026</time><div><strong>Results and participant reports</strong><p>Publish final ranking and prepare competition reporting.</p></div></li>
-                <li><time datetime="2027-04-25">ICSE 2027</time><div><strong>Competition session</strong><p>Present systems, results, failure modes, and lessons learned.</p></div></li>
-              </ol>
-            </div>
-
-            <div>
-              <h3>Official Track deadlines</h3>
-              <div class="deadline-list">
-                <div><time datetime="2026-12-04">Dec 4, 2026</time><span>Solution papers and organizer reports due</span></div>
-                <div><time datetime="2026-12-16">Dec 16, 2026</time><span>Reviewer response</span></div>
-                <div><time datetime="2027-01-06">Jan 6, 2027</time><span>Revisions due</span></div>
-                <div><time datetime="2027-01-13">Jan 13, 2027</time><span>Final notification</span></div>
-                <div><time datetime="2027-01-20">Jan 20, 2027</time><span>Camera-ready deadline</span></div>
-                <div class="deadline-highlight"><time datetime="2027-04-25">Apr 25 - May 1, 2027</time><span>In-person ICSE 2027 sessions</span></div>
-              </div>
-
-              <div class="paper-note">
-                <i data-lucide="notebook-tabs" aria-hidden="true"></i>
-                <div>
-                  <h4>Planned solution-paper eligibility</h4>
-                  <p>
-                    Teams should submit a valid final entry, comply with integrity rules, disclose
-                    models and major tools, and outperform the announced single-shot LLM baseline.
-                    Invitations remain subject to Track-chair policy.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="faq" aria-labelledby="faq-title">
-        <div class="content-wrap faq-layout">
-          <div class="section-intro sticky-intro">
-            <span class="section-label">FAQ</span>
-            <h2 id="faq-title">What participants need to know</h2>
-            <p>
-              Confirmed details will be versioned here as the starter kit and submission platform are
-              released. Items marked as planned are not yet active services.
-            </p>
-          </div>
-          <div class="faq-list">
-            <details open>
-              <summary>What is the primary competition artifact?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>The proposed main mode accepts one unified diff per case. Teams generate patches with their own LLM or agentic workflow, then organizers apply and evaluate them in a controlled environment.</p>
-            </details>
-            <details>
-              <summary>Must we submit a complete agent?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>No. Containerized agent submission is optional and planned only after the patch-output evaluator and sandbox are stable. It will not replace the main patch ranking.</p>
-            </details>
-            <details>
-              <summary>Can we use closed models and external APIs?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>Patch-generation workflows may use them when models, APIs, retrieval sources, and major tools are disclosed. Network policy for organizer-run containers will be published separately.</p>
-            </details>
-            <details>
-              <summary>How is a successful repair determined?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>The patch must apply cleanly, avoid forbidden evaluator files, pass policy checks, and complete the target-architecture build validator without bypassing required build or test steps.</p>
-            </details>
-            <details>
-              <summary>Will the hidden test set be released?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>No. The hidden set remains organizer-controlled through final evaluation. Only aggregate results and a limited diagnostic breakdown will be released after the deadline.</p>
-            </details>
-            <details>
-              <summary>How often may a team submit?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>The final limit is to be announced. The proposal allows rate limits to control build resources and reduce overfitting to the public validation set.</p>
-            </details>
-            <details>
-              <summary>Where will submissions run?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>The preferred public platform is a hosted leaderboard such as EvalAI. If long-running builds make that impractical, submissions may use GitHub releases with organizer-server validation on a fixed cadence. The platform decision is not yet final.</p>
-            </details>
-            <details>
-              <summary>What baselines will be provided?<i data-lucide="plus" aria-hidden="true"></i></summary>
-              <p>The proposal lists four: no-op, spec-only heuristic, single-shot LLM, and an iterative MCP-based Build-Bench agent with structure extraction, file inspection, patch generation, and build verification.</p>
-            </details>
+          <div class="milestone-preview">
+            <div><time datetime="2026-08">Aug 2026</time><span>Development set and baselines</span></div>
+            <div><time datetime="2026-09">Sep 2026</time><span>Public validation leaderboard</span></div>
+            <div><time datetime="2026-11">Nov 2026</time><span>Final submission freeze</span></div>
+            <div><time datetime="2026-12">Dec 2026</time><span>Results and participant reports</span></div>
+            <div><time datetime="2027">ICSE 2027</time><span>Competition session and presentation</span></div>
           </div>
         </div>
       </section>
@@ -619,21 +169,14 @@
         <div class="content-wrap">
           <div class="section-intro centered-intro light-intro">
             <span class="section-label">Organizers</span>
-            <h2 id="organizers-title">The Build-Bench team</h2>
-            <p>College of Software, Nankai University, with industry guidance from Microsoft.</p>
+            <h2 id="organizers-title">Build-Bench team</h2>
+            <p>College of Software, Nankai University, with industry collaboration from Microsoft.</p>
           </div>
-
           <div class="organizer-grid">
-            <article><span>CZ</span><h3>Chenyu Zhao</h3><p>Main contact, website, data release, public leaderboard, and evaluator infrastructure.</p><small>Nankai University</small></article>
-            <article><span>SS</span><h3>Shenglin Zhang</h3><p>Competition design, final hidden evaluation, ICSE session, and post-competition report.</p><small>Nankai University</small></article>
-            <article><span>ZH</span><h3>Zeshun Huang</h3><p>Participant support, technical questions, public documentation, and starter-kit reproduction.</p><small>Nankai University</small></article>
-            <article><span>MM</span><h3>Minghua Ma</h3><p>Industry liaison, external advice, participant outreach, and report review.</p><small>Microsoft</small></article>
-          </div>
-
-          <div class="contact-row">
-            <a href="mailto:zhaochenyu@mail.nankai.edu.cn"><i data-lucide="mail" aria-hidden="true"></i>Contact the organizers</a>
-            <a href="https://github.com/zcyyc/Build-bench" target="_blank" rel="noreferrer"><i data-lucide="message-square" aria-hidden="true"></i>Research repository</a>
-            <a href="https://conf.researchr.org/track/icse-2027/icse-2027-competition-track" target="_blank" rel="noreferrer"><i data-lucide="calendar-days" aria-hidden="true"></i>Official Track</a>
+            <article><span>CZ</span><h3>Chenyu Zhao</h3><p>Main contact, dataset, website, leaderboard, and evaluation infrastructure</p><small>Nankai University</small></article>
+            <article><span>SZ</span><h3>Shenglin Zhang</h3><p>Competition design, hidden evaluation, ICSE session, and final report</p><small>Nankai University</small></article>
+            <article><span>ZH</span><h3>Zeshun Huang</h3><p>Participant support, technical documentation, and starter-kit reproduction</p><small>Nankai University</small></article>
+            <article><span>MM</span><h3>Minghua Ma</h3><p>Industry liaison, external advice, outreach, and report review</p><small>Microsoft</small></article>
           </div>
         </div>
       </section>
@@ -642,8 +185,8 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand"><span class="brand-mark" aria-hidden="true">BB</span><div><strong>Build-Bench Challenge</strong><small>ICSE 2027 Competition Track</small></div></div>
-        <p>Organizer preview. Competition rules, data, platform, and participant deadlines remain subject to the final public release.</p>
-        <a href="#overview">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a>
+        <nav class="footer-links" aria-label="Footer navigation"><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a></nav>
+        <a href="#main-content">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a>
       </div>
     </footer>
   </body>

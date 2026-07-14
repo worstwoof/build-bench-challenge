@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Draft evaluation protocol, metrics, and organizer-run harness for the Build-Bench Challenge." />
+    <title>Evaluation | Build-Bench Challenge</title>
+    <link rel="canonical" href="https://worstwoof.github.io/build-bench-challenge/evaluation.html" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="evaluation">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="status-strip" role="status"><span class="status-strip-label">Draft evaluation</span><span>Proposal-derived metrics are shown for review and are not yet the team's final competition rules.</span></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Build-Bench Challenge home"><span class="brand-mark" aria-hidden="true">BB</span><span>Build-Bench</span></a>
+        <button class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" title="Open navigation" data-menu-button><i data-lucide="menu" aria-hidden="true"></i></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="index.html">Overview</a><a href="task.html">Task &amp; Data</a><a href="submission.html">Submission</a><a class="active" href="evaluation.html" aria-current="page">Evaluation</a><a href="rules.html">Rules</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a><a class="nav-emphasis" href="leaderboard.html"><i data-lucide="trophy" aria-hidden="true"></i>Leaderboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="page-masthead draft-masthead">
+        <div class="content-wrap">
+          <div><span class="page-kicker"><i data-lucide="file-clock" aria-hidden="true"></i>Draft protocol</span><h1>Evaluation</h1><p>The harness runs submitted Agents on controlled cases, applies their repairs, executes the target build, and converts those outcomes into reproducible metrics.</p></div>
+          <dl class="masthead-facts"><div><dt>Oracle</dt><dd>Executable build</dd></div><div><dt>Primary metric</dt><dd>Proposed success rate</dd></div><div><dt>Final definitions</dt><dd>Pending approval</dd></div></dl>
+        </div>
+      </section>
+
+      <div class="content-wrap page-layout">
+        <aside class="page-rail" aria-label="On this page">
+          <strong>On this page</strong>
+          <nav><a href="#status">Protocol status</a><a href="#principle">Core principle</a><a href="#harness">Evaluation harness</a><a href="#metrics">Proposed metrics</a><a href="#feedback">Public vs. hidden</a><a href="#decisions">Open decisions</a></nav>
+          <div class="rail-status draft"><span>Draft</span><p>Metrics originate from the accepted proposal, not a completed post-acceptance team decision.</p></div>
+        </aside>
+
+        <article class="page-document">
+          <div class="draft-banner"><i data-lucide="triangle-alert" aria-hidden="true"></i><div><strong>Not yet the official scoring specification</strong><p>The accepted proposal names build success rate and several tie-breakers. They are reproduced here as a reviewable draft. Exact formulas, budgets, failure handling, ranking frequency, and tie-breakers must be confirmed before launch.</p></div></div>
+
+          <section class="doc-section" id="status">
+            <span class="section-label">Protocol status</span>
+            <h2>Separate source material from final rules</h2>
+            <div class="table-scroll document-table" tabindex="0" aria-label="Scrollable evaluation protocol status table"><table class="decision-table"><thead><tr><th>Item</th><th>Basis</th><th>Status</th></tr></thead><tbody><tr><td>Executable build as the success oracle</td><td>Build-Bench paper and accepted proposal</td><td><span class="decision-intended">Strong basis</span></td></tr><tr><td>Build success rate as primary metric</td><td>Accepted proposal</td><td><span class="decision-review">Team review</span></td></tr><tr><td>Invalid patch, patch size, file count, build time tie-breakers</td><td>Accepted proposal</td><td><span class="decision-review">Team review</span></td></tr><tr><td>Agent runtime, model cost, token use, retries, and iteration budget</td><td>Not fully specified</td><td><span class="decision-open">Open</span></td></tr></tbody></table></div>
+          </section>
+
+          <section class="doc-section" id="principle">
+            <span class="section-label">Core principle</span>
+            <h2>Executable outcomes are the oracle</h2>
+            <p class="lead">A repair is successful only when it applies cleanly, respects competition policy, and the repaired package passes the official validator on the target architecture.</p>
+            <div class="metric-panel document-metric">
+              <span class="section-label">Proposal-derived primary metric</span>
+              <div class="formula" aria-label="Success rate equals successfully built cases divided by evaluated cases"><span>SuccessRate</span><span>=</span><span class="fraction"><span>successfully built cases</span><span>evaluated cases</span></span></div>
+              <p>Textual similarity to an organizer patch is not the criterion. A different repair may receive credit when it produces a compliant, successful build.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="harness">
+            <span class="section-label">Evaluation harness</span>
+            <h2>Seven observable stages</h2>
+            <ol class="harness-stages">
+              <li><span>1</span><div><strong>Validate entry</strong><p>Verify the Agent artifact, configuration, version, and submission metadata.</p></div><small>Harness</small></li>
+              <li><span>2</span><div><strong>Prepare clean case</strong><p>Check case checksums and create an isolated working copy.</p></div><small>Harness</small></li>
+              <li><span>3</span><div><strong>Invoke Agent</strong><p>Provide standardized input and enforce runtime, API, network, and resource policy.</p></div><small>Agent</small></li>
+              <li><span>4</span><div><strong>Collect output</strong><p>Validate the completion status and repair artifact against the released contract.</p></div><small>Harness</small></li>
+              <li><span>5</span><div><strong>Apply and audit repair</strong><p>Apply the diff to a clean copy and reject forbidden path changes or build bypasses.</p></div><small>Evaluator</small></li>
+              <li><span>6</span><div><strong>Run target build</strong><p>Launch the official OBS or local validator with a bounded timeout.</p></div><small>Validator</small></li>
+              <li><span>7</span><div><strong>Record outcome</strong><p>Write structured status, durations, patch statistics, and permitted logs.</p></div><small>Results</small></li>
+            </ol>
+          </section>
+
+          <section class="doc-section" id="metrics">
+            <span class="section-label">Proposed metrics</span>
+            <h2>What the accepted proposal currently suggests</h2>
+            <div class="table-scroll document-table" tabindex="0" aria-label="Scrollable draft metrics table">
+              <table class="spec-table metric-table"><thead><tr><th>Order</th><th>Metric</th><th>Draft definition</th><th>Status</th></tr></thead><tbody><tr><td>Primary</td><td>Build success rate</td><td>Successfully built cases divided by evaluated cases</td><td><span class="contract-state review">Review</span></td></tr><tr><td>Tie-break 1</td><td>Invalid repairs</td><td>Fewer malformed, non-applying, or policy-invalid repair outputs</td><td><span class="contract-state review">Review</span></td></tr><tr><td>Tie-break 2</td><td>Total patch size</td><td>Smaller cumulative repair diff</td><td><span class="contract-state review">Review</span></td></tr><tr><td>Tie-break 3</td><td>Modified files</td><td>Fewer files changed across evaluated cases</td><td><span class="contract-state review">Review</span></td></tr><tr><td>Tie-break 4</td><td>Build time</td><td>Lower total build time in the organizer environment</td><td><span class="contract-state review">Review</span></td></tr></tbody></table>
+            </div>
+            <div class="source-callout"><i data-lucide="scale" aria-hidden="true"></i><p>These metrics were proposed before the unified Agent contract was finalized. Agent execution cost, model/API budget, repair iterations, and reproducibility may need additional reporting or ranking rules.</p></div>
+          </section>
+
+          <section class="doc-section" id="feedback">
+            <span class="section-label">Feedback policy</span>
+            <h2>Public development without leaking the hidden test</h2>
+            <div class="comparison-columns">
+              <div><span class="contract-state intended">Public validation</span><h3>Actionable feedback</h3><ul><li>Aggregate leaderboard score</li><li>Per-case outcome on released validation inputs</li><li>Permitted build logs and evaluator status</li><li>Versioned evaluator and case manifests</li><li>Submission-frequency limit to reduce overfitting</li></ul></div>
+              <div><span class="contract-state tba">Hidden final</span><h3>Controlled disclosure</h3><ul><li>Organizer-run held-out cases</li><li>Frozen Agent artifact and evaluator version</li><li>Aggregate results after the deadline</li><li>Limited diagnostic categories</li><li>Audit and rerun of suspicious or affected entries</li></ul></div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="decisions">
+            <span class="section-label">Open decisions</span>
+            <h2>Items the organizing team must resolve</h2>
+            <div class="decision-checklist">
+              <div><span>01</span><p><strong>Denominator semantics</strong> Decide how Agent crashes, invalid output, organizer faults, and canceled cases affect evaluated-case counts.</p></div>
+              <div><span>02</span><p><strong>Budget policy</strong> Freeze wall time, build attempts, iterations, tool calls, CPU, memory, storage, and concurrent cases.</p></div>
+              <div><span>03</span><p><strong>Cost reporting</strong> Decide whether token use, model/API spend, Agent runtime, and build time are ranking metrics or informational columns.</p></div>
+              <div><span>04</span><p><strong>Tie-break precision</strong> Define invalid-repair classes, patch-size calculation, file counting, and build-time aggregation.</p></div>
+              <div><span>05</span><p><strong>Leaderboard cadence</strong> Set submission limits, queue rules, rerun policy, score visibility, and the final-entry selection deadline.</p></div>
+              <div><span>06</span><p><strong>Reproducibility checks</strong> Define artifact retention, rerun tolerance, nondeterminism policy, and required disclosures.</p></div>
+            </div>
+          </section>
+
+          <nav class="next-page" aria-label="Next page"><span>Next</span><a href="rules.html"><strong>Rules</strong><small>Review integrity and reproducibility requirements</small><i data-lucide="arrow-right" aria-hidden="true"></i></a></nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><span class="brand-mark" aria-hidden="true">BB</span><div><strong>Build-Bench Challenge</strong><small>ICSE 2027 Competition Track</small></div></div><nav class="footer-links" aria-label="Footer navigation"><a href="submission.html">Submission</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a><a href="faq.html">FAQ</a></nav><a href="#main-content">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a></div></footer>
+  </body>
+</html>
