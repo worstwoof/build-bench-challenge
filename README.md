@@ -11,9 +11,17 @@ Open `index.html` directly, or serve the directory with any static file server.
 
 ## Content status
 
-Rules, submission formats, and participant dates are organizer-preview content.
-Confirm them against the final evaluator and starter kit before removing the
-preview banner.
+The site separates verified research results from planned competition
+infrastructure:
+
+- `index.html` documents the task, data, evaluator, proposed submission modes,
+  rules, timeline, FAQ, and organizers.
+- `leaderboard.html` shows paper-reported research baselines until public
+  competition submissions open.
+
+Rules, final split counts, platform details, submission limits, and participant
+deadlines remain organizer-preview content. Confirm them against the released
+evaluator and starter kit before removing the preview banners.
 
 ## Sources
 

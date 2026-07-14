@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Build-Bench Challenge leaderboard preview and paper-reported research baseline results."
+    />
+    <meta property="og:title" content="Build-Bench Leaderboard | ICSE 2027" />
+    <meta
+      property="og:description"
+      content="Research baseline reference for cross-architecture package build repair."
+    />
+    <meta
+      property="og:url"
+      content="https://worstwoof.github.io/build-bench-challenge/leaderboard.html"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Build-Bench Leaderboard | ICSE 2027</title>
+    <link
+      rel="canonical"
+      href="https://worstwoof.github.io/build-bench-challenge/leaderboard.html"
+    />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body data-page="leaderboard">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="status-strip" role="status">
+      <span class="status-strip-label">Leaderboard preview</span>
+      <span>Competition submissions are not open. Results below come from the Build-Bench paper.</span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Build-Bench Challenge home">
+          <span class="brand-mark" aria-hidden="true">BB</span>
+          <span>Build-Bench</span>
+        </a>
+
+        <button
+          class="icon-button menu-button"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          title="Open navigation"
+          data-menu-button
+        >
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="index.html#overview">Overview</a>
+          <a href="index.html#task">Task</a>
+          <a href="index.html#dataset">Dataset</a>
+          <a href="index.html#evaluation">Evaluation</a>
+          <a href="index.html#participate">Participate</a>
+          <a href="index.html#timeline">Timeline</a>
+          <a href="index.html#faq">FAQ</a>
+          <a class="nav-emphasis active" href="leaderboard.html" aria-current="page">
+            <i data-lucide="trophy" aria-hidden="true"></i>
+            Leaderboard
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="leaderboard-hero" aria-labelledby="leaderboard-title">
+        <div class="content-wrap">
+          <span class="section-label">Build-Bench Challenge</span>
+          <h1 id="leaderboard-title">Leaderboard</h1>
+          <p>
+            A transparent view of executable cross-architecture build repair. The public competition
+            leaderboard is planned for September 2026.
+          </p>
+        </div>
+      </section>
+
+      <section class="leaderboard-section" aria-labelledby="research-results-title">
+        <div class="content-wrap">
+          <div class="board-notice">
+            <i data-lucide="flask-conical" aria-hidden="true"></i>
+            <div>
+              <strong>Research baseline reference, not competition entries</strong>
+              <p>
+                These values are reproduced from Table 2 of the Build-Bench paper. Models were evaluated
+                once per package under a fixed configuration with up to three repair iterations and 20 tool
+                calls per iteration, using OBS for executable validation.
+              </p>
+            </div>
+            <a href="https://arxiv.org/abs/2511.00780" target="_blank" rel="noreferrer">
+              Read paper<i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="board-summary" aria-label="Filtered leaderboard summary">
+            <div><strong data-board-packages>268</strong><span>packages in view</span></div>
+            <div><strong data-board-models>7</strong><span>models in view</span></div>
+            <div><strong data-board-best>63.19%</strong><span>best success rate</span></div>
+            <div><strong>Build</strong><span>executable oracle</span></div>
+          </div>
+
+          <div class="board-header">
+            <div>
+              <span class="section-label">Paper-reported results</span>
+              <h2 id="research-results-title">Main experimental configuration</h2>
+              <p>Filter by migration direction. Rank is recalculated within the selected view.</p>
+            </div>
+            <div class="board-filters" role="group" aria-label="Migration direction filter">
+              <button class="active" type="button" aria-pressed="true" data-board-filter="all">All directions</button>
+              <button type="button" aria-pressed="false" data-board-filter="forward">x86_64 &rarr; aarch64</button>
+              <button type="button" aria-pressed="false" data-board-filter="reverse">aarch64 &rarr; x86_64</button>
+            </div>
+          </div>
+
+          <div class="table-scroll" tabindex="0" aria-label="Scrollable research results table">
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Direction</th>
+                  <th scope="col">Success</th>
+                  <th scope="col">Success rate</th>
+                  <th scope="col">Avg. time</th>
+                  <th scope="col">Avg. tokens</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-direction="forward" data-rate="63.19" data-total="163"><td data-rank>1</td><th scope="row">GPT-5</th><td>x86_64 &rarr; aarch64</td><td>103 / 163</td><td><strong>63.19%</strong></td><td>31.18 min</td><td>1,830.91K</td></tr>
+                <tr data-direction="forward" data-rate="28.83" data-total="163"><td data-rank>2</td><th scope="row">GPT-5-mini</th><td>x86_64 &rarr; aarch64</td><td>47 / 163</td><td><strong>28.83%</strong></td><td>13.80 min</td><td>1,683.95K</td></tr>
+                <tr data-direction="forward" data-rate="17.18" data-total="163"><td data-rank>3</td><th scope="row">Qwen3-max</th><td>x86_64 &rarr; aarch64</td><td>28 / 163</td><td><strong>17.18%</strong></td><td>35.69 min</td><td>505.39K</td></tr>
+                <tr data-direction="forward" data-rate="13.50" data-total="163"><td data-rank>4</td><th scope="row">GPT-4o</th><td>x86_64 &rarr; aarch64</td><td>22 / 163</td><td><strong>13.50%</strong></td><td>5.93 min</td><td>541.66K</td></tr>
+                <tr data-direction="forward" data-rate="9.82" data-total="163"><td data-rank>5</td><th scope="row">Claude Sonnet 4.5</th><td>x86_64 &rarr; aarch64</td><td>16 / 163</td><td><strong>9.82%</strong></td><td>6.27 min</td><td>328.76K</td></tr>
+                <tr data-direction="forward" data-rate="7.98" data-total="163"><td data-rank>6</td><th scope="row">DeepSeek V3</th><td>x86_64 &rarr; aarch64</td><td>13 / 163</td><td><strong>7.98%</strong></td><td>11.37 min</td><td>235.53K</td></tr>
+                <tr data-direction="forward" data-rate="4.91" data-total="163"><td data-rank>7</td><th scope="row">Qwen2.5-3B-Instruct</th><td>x86_64 &rarr; aarch64</td><td>8 / 163</td><td><strong>4.91%</strong></td><td>27.65 min</td><td>591.90K</td></tr>
+                <tr data-direction="reverse" data-rate="29.52" data-total="105"><td data-rank>1</td><th scope="row">GPT-5</th><td>aarch64 &rarr; x86_64</td><td>31 / 105</td><td><strong>29.52%</strong></td><td>18.55 min</td><td>1,518.66K</td></tr>
+                <tr data-direction="reverse" data-rate="26.67" data-total="105"><td data-rank>2</td><th scope="row">GPT-5-mini</th><td>aarch64 &rarr; x86_64</td><td>28 / 105</td><td><strong>26.67%</strong></td><td>14.37 min</td><td>1,894.60K</td></tr>
+                <tr data-direction="reverse" data-rate="12.38" data-total="105"><td data-rank>3</td><th scope="row">GPT-4o</th><td>aarch64 &rarr; x86_64</td><td>13 / 105</td><td><strong>12.38%</strong></td><td>5.82 min</td><td>614.12K</td></tr>
+                <tr data-direction="reverse" data-rate="5.71" data-total="105"><td data-rank>4</td><th scope="row">Qwen3-max</th><td>aarch64 &rarr; x86_64</td><td>6 / 105</td><td><strong>5.71%</strong></td><td>27.46 min</td><td>359.16K</td></tr>
+                <tr data-direction="reverse" data-rate="5.71" data-total="105"><td data-rank>5</td><th scope="row">Claude Sonnet 4.5</th><td>aarch64 &rarr; x86_64</td><td>6 / 105</td><td><strong>5.71%</strong></td><td>4.52 min</td><td>332.99K</td></tr>
+                <tr data-direction="reverse" data-rate="3.81" data-total="105"><td data-rank>6</td><th scope="row">DeepSeek V3</th><td>aarch64 &rarr; x86_64</td><td>4 / 105</td><td><strong>3.81%</strong></td><td>19.27 min</td><td>445.03K</td></tr>
+                <tr data-direction="reverse" data-rate="1.90" data-total="105"><td data-rank>7</td><th scope="row">Qwen2.5-3B-Instruct</th><td>aarch64 &rarr; x86_64</td><td>2 / 105</td><td><strong>1.90%</strong></td><td>24.33 min</td><td>373.81K</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="board-footnotes">
+            <p><strong>Success</strong> is the number of packages successfully built on the target architecture.</p>
+            <p><strong>Average time</strong> and <strong>average tokens</strong> follow the definitions reported in the paper and are not proposed competition tie-breakers except where explicitly stated in the official rules.</p>
+            <p>The paper evaluates each model once per package under a fixed configuration. API and backend evolution may affect exact replication.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section tinted-section iteration-section" aria-labelledby="iteration-title">
+        <div class="content-wrap">
+          <div class="section-intro centered-intro">
+            <span class="section-label">Why iteration matters</span>
+            <h2 id="iteration-title">Build feedback changes the outcome</h2>
+            <p>
+              The research benchmark allows updated build logs and prior repair output to inform later
+              attempts. The paper reports substantial cumulative gains across three iterations.
+            </p>
+          </div>
+
+          <div class="iteration-grid">
+            <article>
+              <span>x86_64 &rarr; aarch64 &middot; GPT-5</span>
+              <div class="iteration-bars">
+                <div><small>Iteration 1</small><span><i style="--iteration-width: 58.25%"></i></span><strong>36.81%</strong></div>
+                <div><small>Iteration 2</small><span><i style="--iteration-width: 76.71%"></i></span><strong>48.47%</strong></div>
+                <div><small>Iteration 3</small><span><i style="--iteration-width: 100%"></i></span><strong>63.19%</strong></div>
+              </div>
+              <p>+26.38 percentage points from the first to the third iteration.</p>
+            </article>
+            <article>
+              <span>aarch64 &rarr; x86_64 &middot; GPT-5</span>
+              <div class="iteration-bars">
+                <div><small>Iteration 1</small><span><i style="--iteration-width: 38.72%"></i></span><strong>11.43%</strong></div>
+                <div><small>Iteration 2</small><span><i style="--iteration-width: 54.84%"></i></span><strong>16.19%</strong></div>
+                <div><small>Iteration 3</small><span><i style="--iteration-width: 100%"></i></span><strong>29.52%</strong></div>
+              </div>
+              <p>+18.10 percentage points from the first to the third iteration.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="board-cta">
+        <div class="content-wrap">
+          <div>
+            <span class="section-label">Competition status</span>
+            <h2>Public validation is planned for September 2026</h2>
+            <p>
+              Competition entries, submission limits, evaluator version, and final columns will be
+              announced with the starter kit and public platform.
+            </p>
+          </div>
+          <div>
+            <a class="primary-action" href="index.html#participate"><i data-lucide="book-open" aria-hidden="true"></i>Read participation plan</a>
+            <a class="secondary-action" href="https://github.com/zcyyc/Build-bench" target="_blank" rel="noreferrer"><i data-lucide="github" aria-hidden="true"></i>Explore the research code</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand"><span class="brand-mark" aria-hidden="true">BB</span><div><strong>Build-Bench Challenge</strong><small>ICSE 2027 Competition Track</small></div></div>
+        <p>Research baseline preview. Competition entries and the official leaderboard are not yet open.</p>
+        <a href="#main-content">Back to top<i data-lucide="arrow-up" aria-hidden="true"></i></a>
+      </div>
+    </footer>
+  </body>
+</html>
